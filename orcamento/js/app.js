@@ -565,7 +565,7 @@ async function enviarPedido(tipoDocumento) {
   renderizarCarrinho();
   document.querySelector(".overlay-contato").remove();
 
-  window.location.href = linkWhatsApp;
+  window.open(linkWhatsApp, "_blank");
 }
 
 function montarLinkWhatsApp(nome, linhaIdentificacao, itens) {
