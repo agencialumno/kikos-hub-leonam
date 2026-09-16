@@ -36,14 +36,14 @@
 const produtos = [
 
   // ── LINHA TITAN ──────────────────────────────────────
-  { id: 1, nome: "Supino Reto", codigo: "Y905", categoria: "Titan", foto: "assets/images/produtos/titan/y905.jpg" },
-  { id: 2, nome: "Supino Declinado", codigo: "Y910", categoria: "Titan", foto: "assets/images/produtos/titan/y910.jpg" },
-  { id: 3, nome: "Supino Inclinado", codigo: "Y915", categoria: "Titan", foto: "assets/images/produtos/titan/y915.jpg" },
+  { id: 1, nome: "Supino Reto", codigo: "Y905", categoria: "Titan", foto: "https://www.kikos.com.br/media/catalog/product/cache/25521d4458ddce7b0e29b7c6f134a0e2/y/9/y905_-_supino_reto_titan_y905_-_001.jpg" },
+  { id: 2, nome: "Supino Declinado", codigo: "Y910", categoria: "Titan", foto: "https://www.kikos.com.br/media/catalog/product/cache/25521d4458ddce7b0e29b7c6f134a0e2/y/9/y910_-_supino_declinado_titan_y910_-_001.jpg" },
+  { id: 3, nome: "Supino Inclinado", codigo: "Y915", categoria: "Titan", foto: "https://www.kikos.com.br/media/catalog/product/cache/25521d4458ddce7b0e29b7c6f134a0e2/y/9/y915_-_supino_inclinado_titan_y915_-_001.jpg" },
   { id: 4, nome: "Puxada Alta", codigo: "Y920", categoria: "Titan", foto: "assets/images/produtos/titan/y920.jpg" },
   { id: 5, nome: "Remada Baixa", codigo: "Y925", categoria: "Titan", foto: "assets/images/produtos/titan/y925.jpg" },
   { id: 6, nome: "Remada", codigo: "Y930", categoria: "Titan", foto: "assets/images/produtos/titan/y930.jpg" },
-  { id: 7, nome: "Desenvolvimento Ombro", codigo: "Y935", categoria: "Titan", foto: "assets/images/produtos/titan/y935.jpg" },
-  { id: 8, nome: "Glúteo", codigo: "Y940", categoria: "Titan", foto: "assets/images/produtos/titan/y940.jpg" },
+  { id: 7, nome: "Desenvolvimento Ombro", codigo: "Y935", categoria: "Titan", foto: "https://www.kikos.com.br/media/catalog/product/cache/25521d4458ddce7b0e29b7c6f134a0e2/y/9/y935_-_desevolvimento_ombro_titan_y935_-_001.jpg" },
+  { id: 8, nome: "Glúteo", codigo: "Y940", categoria: "Titan", foto: "https://www.kikos.com.br/media/catalog/product/cache/25521d4458ddce7b0e29b7c6f134a0e2/y/9/y940_-_gluteo_titan_y940_-_001.jpg" },
   { id: 9, nome: "Extensora", codigo: "Y960", categoria: "Titan", foto: "assets/images/produtos/titan/y960.jpg" },
   { id: 10, nome: "Tríceps", codigo: "Y965", categoria: "Titan", foto: "assets/images/produtos/titan/y965.jpg" },
   { id: 11, nome: "Bíceps", codigo: "Y970", categoria: "Titan", foto: "assets/images/produtos/titan/y970.jpg" },
@@ -94,7 +94,7 @@ const produtos = [
   { id: 48, nome: "Bicicleta Ergométrica Kikos KV10.0 Eletromagnética", codigo: "KV10.0", categoria: "Bikes", foto: "assets/images/produtos/pro/kv10_0.jpg" },
   { id: 49, nome: "Bike Vertical KV9.8iX", codigo: "KV9.8iX", categoria: "Bikes", foto: "assets/images/produtos/pro/kv9_8ix.jpg" },
   { id: 50, nome: "Bicicleta Ergométrica Kikos KR11.0 Eletromagnética", codigo: "KR11.0", categoria: "Bikes", foto: "assets/images/produtos/pro/kr11_0.jpg" },
-  { id: 51, nome: "Bike Horizontal KR9.9iX", codigo: "KR9.9iX", categoria: "Bikes", foto: "assets/images/produtos/pro/kr9_9ix.jpg" },
+  { id: 51, nome: "Bike Horizontal KR9.9iX", codigo: "KR9.9iX", categoria: "Bikes", foto: "https://www.kikos.com.br/media/catalog/product/cache/25521d4458ddce7b0e29b7c6f134a0e2/b/i/bicicleta_horizontal_-_kr9.9ix_-_kikos_pro.jpg" },
 
   // ── PRO · ELÍPTICOS ──────────────────────────────────
   { id: 52, nome: "Elíptico KE7.7", codigo: "KE7.7", categoria: "Elípticos", foto: "assets/images/produtos/pro/ke7_7.jpg" },
@@ -185,10 +185,10 @@ const produtos = [
   { id: 127, nome: "Puxada Alta", codigo: "PR33", categoria: "Plate Load", foto: "assets/images/produtos/pro/pl_puxada_alta.jpg" },
   { id: 128, nome: "Remada", codigo: "PR34", categoria: "Plate Load", foto: "assets/images/produtos/pro/pl_remada.jpg" },
   { id: 129, nome: "Puxada Alta com Supino", codigo: "PR35", categoria: "Plate Load", foto: "assets/images/produtos/pro/pl_puxada_alta_com_supino.jpg" },
-  { id: 130, nome: "Pullover", codigo: "PR36", categoria: "Plate Load", foto: "assets/images/produtos/pro/pl_pullover.jpg" },
+  { id: 130, nome: "Pullover", codigo: "PR36", categoria: "Plate Load", foto: "https://www.kikos.com.br/media/catalog/product/cache/25521d4458ddce7b0e29b7c6f134a0e2/p/r/pr36_-_pullover_-_linha_plate_load_-_kikos_pro_-_sku_i012838.jpg" },
   { id: 131, nome: "Leg Press 45°", codigo: "PR70", categoria: "Plate Load", foto: "assets/images/produtos/pro/pl_leg_press_45.jpg" },
   { id: 132, nome: "Cadeira Extensora", codigo: "PR71", categoria: "Plate Load", foto: "assets/images/produtos/pro/pl_cadeira_extensora.jpg" },
-  { id: 133, nome: "Flexora em Pé", codigo: "PR72", categoria: "Plate Load", foto: "assets/images/produtos/pro/pl_flexora_em_pe.jpg" },
+  { id: 133, nome: "Flexora em Pé", codigo: "PR72", categoria: "Plate Load", foto: "https://www.kikos.com.br/media/catalog/product/cache/25521d4458ddce7b0e29b7c6f134a0e2/p/r/pr72_-_flexora_de_p_-_linha_plate_load_-_kikos_pro_-_sku_i001830_-_black_version.jpg" },
   { id: 134, nome: "Abdutora", codigo: "PR73", categoria: "Plate Load", foto: "assets/images/produtos/pro/pl_abdutora.jpg" },
   { id: 135, nome: "Leg Press 90°", codigo: "PR74", categoria: "Plate Load", foto: "assets/images/produtos/pro/pl_leg_press_90.jpg" },
   { id: 136, nome: "Leg Press Unilateral", codigo: "PR75", categoria: "Plate Load", foto: "assets/images/produtos/pro/pl_leg_press_unilateral.jpg" },
@@ -197,7 +197,7 @@ const produtos = [
   { id: 139, nome: "Glúteo", codigo: "PR78", categoria: "Plate Load", foto: "assets/images/produtos/pro/pl_gluteo.jpg" },
   { id: 140, nome: "Panturrilha em Pé", codigo: "PR79", categoria: "Plate Load", foto: "assets/images/produtos/pro/pl_panturrilha_em_pe.jpg" },
   { id: 141, nome: "Levantamento Terra Olímpico", codigo: "PR91", categoria: "Plate Load", foto: "assets/images/produtos/pro/pl_levantamento_terra_olimpico.jpg" },
-  { id: 142, nome: "Agachamento Sissy", codigo: "PR92", categoria: "Plate Load", foto: "assets/images/produtos/pro/pl_agachamento_sissy.jpg" },
+  { id: 142, nome: "Agachamento Sissy", codigo: "PR92", categoria: "Plate Load", foto: "https://www.kikos.com.br/media/catalog/product/f/o/fotos_site_0000s_0003s_0000_pr92_-_agachamento_sissy_-_linha_plate_load_-_kikos_pro_001.jpg" },
   { id: 143, nome: "Elevação Pélvica em Pé", codigo: "PR93", categoria: "Plate Load", foto: "assets/images/produtos/pro/pl_elevacao_pelvica_em_pe.jpg" },
   { id: 144, nome: "Gaiola Agachamento", codigo: "TTFW74", categoria: "Plate Load", foto: "assets/images/produtos/pro/pl_gaiola_agachamento.jpg" },
 
