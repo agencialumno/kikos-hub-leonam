@@ -486,6 +486,11 @@ async function enviarPedido(tipoDocumento) {
   btnConfirmar.disabled = true;
   btnConfirmar.textContent = "Enviando...";
 
+  // Abre a aba já aqui, ainda em branco, enquanto a ação é "recente" (clique do usuário).
+  // Depois de esperar o Firestore/fetch, o navegador pode não deixar mais abrir pop-up,
+  // então só preenchemos o endereço dela no final, com window.open não sendo chamado de novo.
+  const abaWhatsApp = window.open("", "_blank");
+
   const itens = carrinho.map(i => ({ nome: i.nome, codigo: i.codigo || null, quantidade: i.quantidade, categoria: i.categoria, pesoEscolhido: i.pesoEscolhido || null }));
 
   // Verifica se esse telefone já pediu antes (cliente recorrente)
@@ -565,7 +570,12 @@ async function enviarPedido(tipoDocumento) {
   renderizarCarrinho();
   document.querySelector(".overlay-contato").remove();
 
-  window.open(linkWhatsApp, "_blank");
+  if (abaWhatsApp) {
+    abaWhatsApp.location.href = linkWhatsApp;
+  } else {
+    // Navegador bloqueou até a aba em branco (raro) — fallback: navega a própria página.
+    window.location.href = linkWhatsApp;
+  }
 }
 
 function montarLinkWhatsApp(nome, linhaIdentificacao, itens) {

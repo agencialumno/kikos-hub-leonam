@@ -390,4 +390,16 @@ const produtos = [
   { id: 326, nome: "Bike Horizontal KR9.6iX", codigo: "I001331", categoria: "Bikes", foto: "assets/images/produtos/pro/bike_kr9_6ix.jpg" },
   { id: 327, nome: "Bike Vertical KV9.5iX", codigo: "I001332", categoria: "Bikes", foto: "assets/images/produtos/pro/bike_kv9_5ix.jpg" },
 
+  // ── ESTAÇÕES MULTIFUNCIONAIS ──────────────────────────
+  { id: 329, nome: "Estação De Musculação Kikos Gx2I Torre 65kg", codigo: "I002084", categoria: "Estações Multifuncionais", foto: "assets/images/produtos/estacoes/em_gx2i_torre_65kg.jpg" },
+  { id: 330, nome: "Estação De Musculação Kikos 518Ex Torre 96kg", codigo: "I000038", categoria: "Estações Multifuncionais", foto: "assets/images/produtos/estacoes/em_518ex_torre_96kg.jpg" },
+  { id: 331, nome: "Estação De Musculação Kikos Gx4I Torre 65kg", codigo: "I001337", categoria: "Estações Multifuncionais", foto: "assets/images/produtos/estacoes/em_gx4i_torre_65kg.jpg" },
+  { id: 332, nome: "Estação Multifuncional Kikos 515BF Torre 37kg", codigo: "i017532", categoria: "Estações Multifuncionais", foto: "assets/images/produtos/estacoes/em_515bf_torre_37kg.jpg" },
+  { id: 333, nome: "Estação De Musculação Kikos 518Fx Torre 96kg", codigo: "I000039", categoria: "Estações Multifuncionais", foto: "assets/images/produtos/estacoes/em_518fx_torre_96kg.jpg" },
+  { id: 334, nome: "Estação De Musculação Kikos Gx6I 2 Torres 65kg", codigo: "I002111", categoria: "Estações Multifuncionais", foto: "assets/images/produtos/estacoes/em_gx6i_2torres_65kg.jpg" },
+  { id: 335, nome: "Estação Multifuncional Kikos 519BF 2 Torres 60kg", codigo: "I012534", categoria: "Estações Multifuncionais", foto: "assets/images/produtos/estacoes/em_519bf_2torres_60kg.jpg" },
+  { id: 336, nome: "Estação De Musculação Kikos 518BLI 2 Torres 72kg", codigo: "I001338", categoria: "Estações Multifuncionais", foto: "assets/images/produtos/estacoes/em_518bli_2torres_72kg.jpg" },
+  { id: 337, nome: "Estação de Musculação Kikos 518BKI 4 Torres 72kg", codigo: "I001339", categoria: "Estações Multifuncionais", foto: "assets/images/produtos/estacoes/em_518bki_4torres_72kg.jpg" },
+  { id: 338, nome: "Estação de Musculação Kikos Station Multi Hg1505 5 Torres", codigo: "I001369", categoria: "Estações Multifuncionais", foto: "assets/images/produtos/estacoes/em_hg1505_5torres.jpg" },
+
 ];
