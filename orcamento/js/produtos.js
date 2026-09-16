@@ -91,9 +91,9 @@ const produtos = [
   { id: 45, nome: "Bike Magnética MS4000i", codigo: "MS4000i", categoria: "Bikes", foto: "assets/images/produtos/pro/ms4000i.jpg" },
   { id: 46, nome: "Bike Magnética MS2000", codigo: "MS2000", categoria: "Bikes", foto: "assets/images/produtos/pro/ms2000.jpg" },
   { id: 47, nome: "Air Bike ARXi", codigo: "ARXi", categoria: "Bikes", foto: "assets/images/produtos/pro/arxi.jpg" },
-  { id: 48, nome: "Bike Vertical KV10.0", codigo: "KV10.0", categoria: "Bikes", foto: "assets/images/produtos/pro/kv10_0.jpg" },
+  { id: 48, nome: "Bicicleta Ergométrica Kikos KV10.0 Eletromagnética", codigo: "KV10.0", categoria: "Bikes", foto: "assets/images/produtos/pro/kv10_0.jpg" },
   { id: 49, nome: "Bike Vertical KV9.8iX", codigo: "KV9.8iX", categoria: "Bikes", foto: "assets/images/produtos/pro/kv9_8ix.jpg" },
-  { id: 50, nome: "Bike Horizontal KR11.0", codigo: "KR11.0", categoria: "Bikes", foto: "assets/images/produtos/pro/kr11_0.jpg" },
+  { id: 50, nome: "Bicicleta Ergométrica Kikos KR11.0 Eletromagnética", codigo: "KR11.0", categoria: "Bikes", foto: "assets/images/produtos/pro/kr11_0.jpg" },
   { id: 51, nome: "Bike Horizontal KR9.9iX", codigo: "KR9.9iX", categoria: "Bikes", foto: "assets/images/produtos/pro/kr9_9ix.jpg" },
 
   // ── PRO · ELÍPTICOS ──────────────────────────────────
