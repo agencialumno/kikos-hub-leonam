@@ -90,7 +90,7 @@ h2 { font-family: "Rajdhani", Arial, Helvetica, sans-serif; font-weight: 600; le
   line-height: 1.4;
 }
 
-textarea, input[type="text"], input[type="date"], input[type="number"] {
+textarea, input[type="text"], input[type="date"], input[type="number"], select {
   width: 100%;
   padding: 12px;
   border-radius: 8px;
@@ -230,6 +230,24 @@ textarea { resize: vertical; }
   color: var(--vermelho-brilho);
   border-bottom: none;
   text-shadow: 0 0 18px rgba(255, 75, 74, 0.35);
+}
+
+.linha-desconto-geral {
+  align-items: center;
+}
+
+.campo-desconto-geral {
+  display: flex;
+  gap: 6px;
+}
+
+.campo-desconto-geral input {
+  width: 90px;
+  text-align: right;
+}
+
+.campo-desconto-geral select {
+  width: 66px;
 }
 
 @media (max-width: 480px) {

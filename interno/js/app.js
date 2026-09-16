@@ -172,6 +172,9 @@ function renderizarItens(grupos) {
   atualizarTotais();
 }
 
+document.getElementById("input-desconto-geral").addEventListener("input", atualizarTotais);
+document.getElementById("tipo-desconto-geral").addEventListener("change", atualizarTotais);
+
 // ── Recalcula totais por item e o grande total ──────────
 function atualizarTotais() {
   let totalSemDesconto = 0;
@@ -195,10 +198,24 @@ function atualizarTotais() {
     totalDesconto += desconto;
   });
 
-  const totalAPagar = totalSemDesconto - totalDesconto;
+  const subtotalComDescontoItens = totalSemDesconto - totalDesconto;
+
+  // Desconto adicional sobre o total: em % (sobre o subtotal já com desconto de item)
+  // ou em R$ fixo, o que o Victor escolher no seletor.
+  const tipoDescontoGeral = document.getElementById("tipo-desconto-geral").value;
+  const valorDescontoGeralInput = parseFloat(document.getElementById("input-desconto-geral").value) || 0;
+  let descontoGeral = tipoDescontoGeral === "percentual"
+    ? subtotalComDescontoItens * (valorDescontoGeralInput / 100)
+    : valorDescontoGeralInput;
+
+  // Nunca deixa o desconto geral passar do subtotal (evita total negativo)
+  descontoGeral = Math.min(Math.max(descontoGeral, 0), subtotalComDescontoItens);
+
+  const totalAPagar = subtotalComDescontoItens - descontoGeral;
 
   document.getElementById("total-sem-desconto").textContent = formatarMoeda(totalSemDesconto);
   document.getElementById("total-desconto").textContent = formatarMoeda(totalDesconto);
+  document.getElementById("total-desconto-geral").textContent = formatarMoeda(descontoGeral);
   document.getElementById("total-a-pagar").textContent = formatarMoeda(totalAPagar);
 }
 
@@ -303,6 +320,7 @@ function gerarPDF() {
 
   const totalSemDesconto = document.getElementById("total-sem-desconto").textContent;
   const totalDesconto = document.getElementById("total-desconto").textContent;
+  const totalDescontoGeral = document.getElementById("total-desconto-geral").textContent;
   const totalAPagar = document.getElementById("total-a-pagar").textContent;
 
   doc.setFontSize(11);
@@ -312,6 +330,9 @@ function gerarPDF() {
   y += 16;
   doc.text("Valor de desconto:", margemEsq, y);
   doc.text(totalDesconto, 595 - margemEsq, y, { align: "right" });
+  y += 16;
+  doc.text("Desconto adicional:", margemEsq, y);
+  doc.text(totalDescontoGeral, 595 - margemEsq, y, { align: "right" });
   y += 18;
   doc.setFont("helvetica", "bold");
   doc.setFontSize(13);
