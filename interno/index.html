@@ -57,20 +57,9 @@
       <div id="grupos-itens"></div>
     </section>
 
-    <!-- PASSO 4: condições de pagamento -->
-    <section class="cartao" id="secao-condicoes" style="display:none;">
-      <h2>4. Condições de pagamento</h2>
-      <p class="ajuda">Escreva uma condição por linha. Elas aparecem numeradas no PDF, na ordem que você escrever.</p>
-      <textarea id="campo-condicoes" rows="6" placeholder="Forma de pagamento: Entrada: R$ 29.272,00&#10;Mais 4 X R$ 2 mil com primeiro boleto para 40 dias após a emissão da primeira NF&#10;Mais 8X R$ 3 mil&#10;Mais 35 X R$ 10.246,75&#10;Mais última parcela (Opção de compra) R$ 80 mil"></textarea>
-      <div class="campo">
-        <label>Condições válidas até</label>
-        <input type="date" id="campo-validade">
-      </div>
-    </section>
-
-    <!-- PASSO 5: totais + gerar -->
+    <!-- PASSO 4: totais + gerar -->
     <section class="cartao" id="secao-total" style="display:none;">
-      <h2>5. Totais</h2>
+      <h2>4. Totais</h2>
       <div class="linha-total"><span>Valor total sem desconto</span><strong id="total-sem-desconto">R$ 0,00</strong></div>
       <div class="linha-total"><span>Valor de desconto (itens)</span><strong id="total-desconto">R$ 0,00</strong></div>
 
@@ -87,6 +76,17 @@
       <div class="linha-total"><span>Valor do desconto adicional</span><strong id="total-desconto-geral">R$ 0,00</strong></div>
 
       <div class="linha-total destaque"><span>Valor total a pagar</span><strong id="total-a-pagar">R$ 0,00</strong></div>
+    </section>
+
+    <!-- PASSO 5: condições de pagamento -->
+    <section class="cartao" id="secao-condicoes" style="display:none;">
+      <h2>5. Condições de pagamento</h2>
+      <p class="ajuda">Escreva uma condição por linha. Elas aparecem numeradas no PDF, na ordem que você escrever.</p>
+      <textarea id="campo-condicoes" rows="6" placeholder="Forma de pagamento: Entrada: R$ 29.272,00&#10;Mais 4 X R$ 2 mil com primeiro boleto para 40 dias após a emissão da primeira NF&#10;Mais 8X R$ 3 mil&#10;Mais 35 X R$ 10.246,75&#10;Mais última parcela (Opção de compra) R$ 80 mil"></textarea>
+      <div class="campo">
+        <label>Condições válidas até</label>
+        <input type="date" id="campo-validade">
+      </div>
       <button class="btn-principal btn-gerar" id="btn-gerar-pdf">Gerar PDF do orçamento</button>
     </section>
 

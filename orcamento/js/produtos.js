@@ -84,15 +84,15 @@ const produtos = [
   { id: 40, nome: "Esteira T-PRO Run", codigo: "T-PRO RUN", categoria: "Esteiras", foto: "assets/images/produtos/pro/t_pro_run.jpg" },
   { id: 41, nome: "Esteira PRO Run", codigo: "PRO RUN", categoria: "Esteiras", foto: "assets/images/produtos/pro/pro_run.jpg" },
   { id: 42, nome: "Esteira KX8600", codigo: "KX8600", categoria: "Esteiras", foto: "assets/images/produtos/pro/kx8600.jpg" },
-  { id: 43, nome: "Esteira KX8500i", codigo: "KX8500i", categoria: "Esteiras", foto: "assets/images/produtos/pro/kx8500i.jpg" },
+  { id: 43, nome: "Esteira KX8500i", codigo: "KX8500i", categoria: "Esteiras", foto: "https://www.kikos.com.br/media/catalog/product/cache/25521d4458ddce7b0e29b7c6f134a0e2/f/o/foto_ia_-_esteira_kikos_-_kx8500i_-_humanizada_3.jpg" },
 
   // ── PRO · BIKES ──────────────────────────────────────
-  { id: 44, nome: "Bike Spinning F13", codigo: "F13", categoria: "Bikes", foto: "assets/images/produtos/pro/f13.jpg" },
+  { id: 44, nome: "Bike Spinning F13", codigo: "F13", categoria: "Bikes", foto: "https://www.kikos.com.br/media/catalog/product/cache/25521d4458ddce7b0e29b7c6f134a0e2/b/i/bicicleta_spinning_f13_-_humanizada_1.jpg" },
   { id: 45, nome: "Bike Magnética MS4000i", codigo: "MS4000i", categoria: "Bikes", foto: "assets/images/produtos/pro/ms4000i.jpg" },
   { id: 46, nome: "Bike Magnética MS2000", codigo: "MS2000", categoria: "Bikes", foto: "assets/images/produtos/pro/ms2000.jpg" },
-  { id: 47, nome: "Air Bike ARXi", codigo: "ARXi", categoria: "Bikes", foto: "assets/images/produtos/pro/arxi.jpg" },
+  { id: 47, nome: "Air Bike ARXi", codigo: "ARXi", categoria: "Bikes", foto: "https://www.kikos.com.br/media/catalog/product/cache/25521d4458ddce7b0e29b7c6f134a0e2/a/i/airbike_0001_dsc_5359.jpg" },
   { id: 48, nome: "Bicicleta Ergométrica Kikos KV10.0 Eletromagnética", codigo: "KV10.0", categoria: "Bikes", foto: "assets/images/produtos/pro/kv10_0.jpg" },
-  { id: 49, nome: "Bike Vertical KV9.8iX", codigo: "KV9.8iX", categoria: "Bikes", foto: "assets/images/produtos/pro/kv9_8ix.jpg" },
+  { id: 49, nome: "Bike Vertical KV9.8iX", codigo: "KV9.8iX", categoria: "Bikes", foto: "https://www.kikos.com.br/media/catalog/product/cache/25521d4458ddce7b0e29b7c6f134a0e2/b/i/bicicleta_vertical_-_kv9.8ix_-_kikos_pro.jpg" },
   { id: 50, nome: "Bicicleta Ergométrica Kikos KR11.0 Eletromagnética", codigo: "KR11.0", categoria: "Bikes", foto: "assets/images/produtos/pro/kr11_0.jpg" },
   { id: 51, nome: "Bike Horizontal KR9.9iX", codigo: "KR9.9iX", categoria: "Bikes", foto: "https://www.kikos.com.br/media/catalog/product/cache/25521d4458ddce7b0e29b7c6f134a0e2/b/i/bicicleta_horizontal_-_kr9.9ix_-_kikos_pro.jpg" },
 
@@ -340,10 +340,6 @@ const produtos = [
   { id: 281, nome: "Esteira T-KX8500C com Tela", codigo: "T-KX8500C", categoria: "Esteiras", foto: "assets/images/produtos/pro/esteira_t_kx8500c.jpg" },
 
   // ── 7 itens residenciais/complementares confirmados na planilha ──
-  { id: 285, nome: "Bike Spinning Bolt F1", codigo: "F1", categoria: "Bikes", foto: "" },
-  { id: 286, nome: "Bike Spinning F2i", codigo: "F2i", categoria: "Bikes", foto: "https://www.kikos.com.br/media/catalog/product/cache/041e82462066eef1ae3402cf9c4986f8/n/o/novas_fotos_-_site_001_spinning_f2i_3.jpg" },
-  { id: 287, nome: "Bike Spinning F3i", codigo: "F3i", categoria: "Bikes", foto: "https://www.kikos.com.br/media/catalog/product/cache/041e82462066eef1ae3402cf9c4986f8/n/o/novas_fotos_-_site_001_spinning_f3i_3.jpg" },
-  { id: 288, nome: "Bike Spinning F5i", codigo: "F5i", categoria: "Bikes", foto: "https://www.kikos.com.br/media/catalog/product/cache/041e82462066eef1ae3402cf9c4986f8/n/o/novas_fotos_-_site_001_spinning_f5i_3_2.jpg" },
   { id: 289, nome: "Bike Spinning F7i", codigo: "F7i", categoria: "Bikes", foto: "https://www.kikos.com.br/media/catalog/product/cache/041e82462066eef1ae3402cf9c4986f8/n/o/novas_fotos_-_site_001_spinning_f7i_3.jpg" },
   { id: 290, nome: "Bike Spinning F9", codigo: "F9", categoria: "Bikes", foto: "https://www.kikos.com.br/media/catalog/product/cache/041e82462066eef1ae3402cf9c4986f8/s/p/spinning_f9_0003_dsc_3996_1.jpg" },
   { id: 291, nome: "Elíptico KE4.4", codigo: "KE4.4", categoria: "Elípticos", foto: "assets/images/produtos/pro/ke4_4.jpg" },
@@ -388,7 +384,7 @@ const produtos = [
   { id: 324, nome: "Dumbbell Rubber Vermelho Kikos Pro", codigo: "256820", categoria: "Acessórios", foto: "assets/images/produtos/pro/ac_dumbbell_rubber_vermelho_kikos_pro.jpg", pesos: [12, 14, 18] },
   { id: 325, nome: "Barra Montada Reta Pu Lightning Bolt Showroom", codigo: "250028S", categoria: "Acessórios", foto: "assets/images/produtos/pro/ac_barra_montada_reta_pu_lightning_bolt.jpg", pesos: [40, 60] },
   { id: 326, nome: "Bike Horizontal KR9.6iX", codigo: "I001331", categoria: "Bikes", foto: "assets/images/produtos/pro/bike_kr9_6ix.jpg" },
-  { id: 327, nome: "Bike Vertical KV9.5iX", codigo: "I001332", categoria: "Bikes", foto: "assets/images/produtos/pro/bike_kv9_5ix.jpg" },
+  { id: 327, nome: "Bike Vertical KV9.5iX", codigo: "I001332", categoria: "Bikes", foto: "https://www.kikos.com.br/media/catalog/product/cache/25521d4458ddce7b0e29b7c6f134a0e2/k/v/kv9.5_0000_dsc_4560.jpg" },
 
   // ── ESTAÇÕES MULTIFUNCIONAIS ──────────────────────────
   { id: 329, nome: "Estação De Musculação Kikos Gx2I Torre 65kg", codigo: "I002084", categoria: "Estações Multifuncionais", foto: "assets/images/produtos/estacoes/em_gx2i_torre_65kg.jpg" },
