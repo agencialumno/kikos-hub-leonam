@@ -18,6 +18,22 @@ function formatarMoeda(v) {
   return (v || 0).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 }
 
+// ── Numeração automática do orçamento — conta quantos PDFs já foram
+// gerados NESTE navegador (fica salvo no localStorage) e sugere o próximo
+// número. Continua sendo um campo de texto normal, então dá pra editar
+// à mão a qualquer momento (ex: pra alinhar com uma numeração já existente).
+const CHAVE_CONTADOR_ORCAMENTOS = "kikos_interno_contador_orcamentos";
+
+function obterProximoNumero() {
+  const atual = parseInt(localStorage.getItem(CHAVE_CONTADOR_ORCAMENTOS) || "0", 10) || 0;
+  return String(atual + 1);
+}
+
+function registrarOrcamentoGerado() {
+  const atual = parseInt(localStorage.getItem(CHAVE_CONTADOR_ORCAMENTOS) || "0", 10) || 0;
+  localStorage.setItem(CHAVE_CONTADOR_ORCAMENTOS, String(atual + 1));
+}
+
 // ── Busca de preço na base (por SKU exato, depois por código dentro da descrição, depois por nome) ──
 function buscarPreco(nome, codigo) {
   if (codigo) {
@@ -51,6 +67,11 @@ function processarMensagem() {
 
   const nomeMatch = texto.match(/Meu nome é (.+?)\./);
   const nome = nomeMatch ? nomeMatch[1].trim() : "";
+
+  // Tenta achar um telefone no meio do texto (o cliente às vezes deixa junto
+  // do documento). Se não achar, o campo fica em branco pra preencher à mão.
+  const telefoneMatch = texto.match(/\(?\d{2}\)?[\s.-]?9?\d{4}[\s.-]?\d{4}/);
+  const telefone = telefoneMatch ? telefoneMatch[0].trim() : "";
 
   // Tudo entre "para os seguintes equipamentos:" e "Pode me ajudar?" (ou o resto do texto)
   const inicioItens = texto.indexOf("equipamentos:");
@@ -101,7 +122,9 @@ function processarMensagem() {
   gruposParseados = grupos;
 
   document.getElementById("campo-nome").value = nome;
+  document.getElementById("campo-telefone").value = telefone;
   document.getElementById("campo-documento").value = documento;
+  document.getElementById("campo-numero").value = obterProximoNumero();
   document.getElementById("campo-data").valueAsDate = new Date();
 
   renderizarItens(grupos);
@@ -330,6 +353,7 @@ async function gerarPDF() {
     let y = 50;
 
     const nome = document.getElementById("campo-nome").value || "";
+    const telefone = document.getElementById("campo-telefone").value || "";
     const documento = document.getElementById("campo-documento").value || "";
     const numero = document.getElementById("campo-numero").value || "—";
     const dataInput = document.getElementById("campo-data").value;
@@ -366,8 +390,12 @@ async function gerarPDF() {
 
     doc.setTextColor(255, 255, 255);
     doc.setFontSize(10);
-    doc.text(`Data: ${dataFormatada}`, 595 - margemEsq, 32, { align: "right" });
-    doc.text(`Nº: ${numero}`, 595 - margemEsq, 46, { align: "right" });
+    const linhasCabecalho = [`Data: ${dataFormatada}`, `Nº: ${numero}`];
+    if (telefone) linhasCabecalho.push(`Tel: ${telefone}`);
+    const yInicialCabecalho = linhasCabecalho.length === 3 ? 24 : 32;
+    linhasCabecalho.forEach((linha, i) => {
+      doc.text(linha, 595 - margemEsq, yInicialCabecalho + i * 14, { align: "right" });
+    });
 
     y = 100;
     doc.setTextColor(...corEscura);
@@ -520,6 +548,7 @@ async function gerarPDF() {
 
     const nomeArquivo = `Orcamento_Kikos_${numero !== "—" ? numero : "sem_numero"}.pdf`;
     doc.save(nomeArquivo);
+    registrarOrcamentoGerado();
   } catch (erro) {
     console.error("Erro ao gerar PDF:", erro);
     alert("Deu um erro gerando o PDF — confere o console (F12) e tenta de novo.");
