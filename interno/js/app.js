@@ -87,6 +87,15 @@ function processarMensagem() {
   if (inicioGostaria > finalNome) {
     documento = texto.slice(finalNome, inicioGostaria).trim();
   }
+  // Tira o telefone de dentro do endereço/documento (ele já vai separado,
+  // no cabeçalho do PDF) — sem isso ficava duplicado, na frente do endereço.
+  if (telefoneMatch) {
+    documento = documento
+      .split("\n")
+      .map(l => l.trim())
+      .filter(l => l && !l.includes(telefoneMatch[0]))
+      .join("\n");
+  }
 
   // Quebra em blocos por linha (separados por linha em branco), cada um começando com *Linha X*
   const blocos = blocoItens.split(/\n\s*\n/).map(b => b.trim()).filter(Boolean);
@@ -313,6 +322,32 @@ function desenharGradienteHorizontal(doc, x, y, w, h, corInicio, corFim, passos 
 
 // ── Geração do PDF ───────────────────────────────────────
 // ── Desenha a fita vermelha decorativa na lateral direita da página ──────
+// ── Nome + um sobrenome só, pra caber bem na capa (ex: "João da Silva" -> "João Silva") ──
+function nomeResumido(nomeCompleto) {
+  const partes = (nomeCompleto || "").trim().split(/\s+/).filter(Boolean);
+  if (partes.length <= 1) return partes[0] || "";
+  return `${partes[0]} ${partes[partes.length - 1]}`;
+}
+
+// ── Acha um CPF ou CNPJ dentro de um texto livre, pra mostrar na capa ──
+function extrairCpfCnpj(texto) {
+  const cnpj = (texto || "").match(/\d{2}\.?\d{3}\.?\d{3}\/?\d{4}-?\d{2}/);
+  if (cnpj) return cnpj[0];
+  const cpf = (texto || "").match(/\d{3}\.?\d{3}\.?\d{3}-?\d{2}/);
+  return cpf ? cpf[0] : "";
+}
+
+// ── Garante espaço pro que vem a seguir; se não couber, pula de página.
+// Retorna o "y" onde continuar desenhando (ou o topo de uma página nova). ──
+function garantirEspaco(doc, yAtual, alturaNecessaria, margemInferior = 70) {
+  const alturaPagina = doc.internal.pageSize.height;
+  if (yAtual + alturaNecessaria > alturaPagina - margemInferior) {
+    doc.addPage();
+    return 50;
+  }
+  return yAtual;
+}
+
 function desenharFitaLateral(doc) {
   const larguraPagina = 595;
   const alturaPagina = doc.internal.pageSize.height;
@@ -362,7 +397,9 @@ async function gerarPDF() {
     const validadeInput = document.getElementById("campo-validade").value;
     const validadeFormatada = validadeInput ? new Date(validadeInput + "T00:00:00").toLocaleDateString("pt-BR") : "";
 
-    // Pré-carrega só as fotos dos códigos que aparecem nesse pedido
+    // Pré-carrega a imagem de capa e só as fotos dos códigos que aparecem nesse pedido
+    const capaCarregada = await carregarImagemComoDataURL("assets/images/capa-orcamento.jpg");
+
     const codigosUnicos = [...new Set(
       gruposParseados.flatMap(g => g.itens.map(i => i.codigo).filter(Boolean))
     )];
@@ -374,7 +411,33 @@ async function gerarPDF() {
       if (resultado) fotosCarregadas.set(codigo, resultado);
     }));
 
-    // Cabeçalho
+    // ── Página de capa ──
+    if (capaCarregada) {
+      doc.addImage(capaCarregada.dataUrl, "JPEG", 0, 0, larguraPagina, doc.internal.pageSize.height);
+    }
+    const larguraTextoCapa = 260; // fica dentro da área escura, sem invadir a foto da loja à direita
+    let yCapa = 250;
+    doc.setTextColor(255, 255, 255);
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(26);
+    doc.text("Orçamento", margemEsq, yCapa);
+    yCapa += 26;
+    doc.setFontSize(14);
+    doc.text(nomeResumido(nome), margemEsq, yCapa);
+    yCapa += 18;
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(10);
+    if (documento) {
+      const linhasDocCapa = doc.splitTextToSize(documento, larguraTextoCapa);
+      doc.text(linhasDocCapa, margemEsq, yCapa);
+      yCapa += linhasDocCapa.length * 13;
+    }
+    if (telefone) {
+      doc.text(`Tel: ${telefone}`, margemEsq, yCapa);
+    }
+    doc.addPage();
+
+    // ── Cabeçalho ──
     doc.setFillColor(...corEscura);
     doc.rect(0, 0, 595, 70, "F");
 
@@ -410,7 +473,12 @@ async function gerarPDF() {
     doc.setFontSize(10);
     const linhasDoc = doc.splitTextToSize(documento, larguraUtil - 26);
     doc.text(linhasDoc, margemEsq, y);
-    y += linhasDoc.length * 12 + 18;
+    y += linhasDoc.length * 12;
+    if (telefone) {
+      y += 12;
+      doc.text(`Tel: ${telefone}`, margemEsq, y);
+    }
+    y += 18;
 
     // Banner "LISTA DE EQUIPAMENTOS"
     doc.setDrawColor(...corEscura);
@@ -430,6 +498,7 @@ async function gerarPDF() {
     const larguraImagem = 40;
 
     gruposParseados.forEach(grupo => {
+      y = garantirEspaco(doc, y, 60);
       doc.setTextColor(...corEscura);
       doc.setFont("helvetica", "bold");
       doc.setFontSize(12);
@@ -485,6 +554,7 @@ async function gerarPDF() {
       y += 28;
     });
 
+    y = garantirEspaco(doc, y, 95);
     doc.setFontSize(11);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(...corEscura);
@@ -505,6 +575,7 @@ async function gerarPDF() {
     y += 30;
 
     // Condições de pagamento
+    y = garantirEspaco(doc, y, 40);
     doc.setTextColor(...corEscura);
     doc.setFontSize(12);
     doc.setFont("helvetica", "bold");
@@ -517,11 +588,14 @@ async function gerarPDF() {
     linhasCondicoes.forEach((linha, i) => {
       const textoNumerado = `${i + 1}- ${linha}`;
       const quebrado = doc.splitTextToSize(textoNumerado, larguraUtil - 26);
+      const alturaLinha = quebrado.length * 13 + 4;
+      y = garantirEspaco(doc, y, alturaLinha);
       doc.text(quebrado, margemEsq, y);
-      y += quebrado.length * 13 + 4;
+      y += alturaLinha;
     });
 
     if (validadeFormatada) {
+      y = garantirEspaco(doc, y, 28);
       y += 8;
       doc.setFont("helvetica", "bold");
       doc.text(`Condições válidas até ${validadeFormatada}`, margemEsq, y);
@@ -539,9 +613,9 @@ async function gerarPDF() {
       alturaPagina - 30
     );
 
-    // Fita decorativa em todas as páginas geradas
+    // Fita decorativa em todas as páginas de conteúdo (não na capa)
     const totalPaginas = doc.internal.getNumberOfPages();
-    for (let p = 1; p <= totalPaginas; p++) {
+    for (let p = 2; p <= totalPaginas; p++) {
       doc.setPage(p);
       desenharFitaLateral(doc);
     }
