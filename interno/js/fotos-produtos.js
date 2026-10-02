@@ -3,6 +3,17 @@
 // se um código novo não tiver foto aqui, o PDF simplesmente deixa a célula
 // de imagem em branco (não quebra nada).
 const FOTOS_PRODUTOS = {
+  "PM 2038": "assets/images/produtos-catalogo/PM_2038.jpg",
+  "PM 2039": "assets/images/produtos-catalogo/PM_2039.jpg",
+  "PM 2040": "assets/images/produtos-catalogo/PM_2040.jpg",
+  "PM 2041": "assets/images/produtos-catalogo/PM_2041.jpg",
+  "PM 2042": "assets/images/produtos-catalogo/PM_2042.jpg",
+  "PM 2043": "assets/images/produtos-catalogo/PM_2043.jpg",
+  "PM 2044": "assets/images/produtos-catalogo/PM_2044.jpg",
+  "PM 2045": "assets/images/produtos-catalogo/PM_2045.jpg",
+  "PM 2046": "assets/images/produtos-catalogo/PM_2046.jpg",
+  "PM 2047": "assets/images/produtos-catalogo/PM_2047.jpg",
+  "PM 2048": "assets/images/produtos-catalogo/PM_2048.jpg",
   "11CX": "assets/images/produtos-catalogo/11CX.jpg",
   "2000842": "assets/images/produtos-catalogo/2000842.jpg",
   "250028S": "assets/images/produtos-catalogo/250028S.jpg",

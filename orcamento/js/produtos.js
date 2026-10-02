@@ -321,17 +321,17 @@ const produtos = [
 
   // ── HAMMER FORCE PM (linha nova — sem foto ainda, produto não publicado no site) ──
   { id: 264, nome: "Bíceps", codigo: "PM 2037", categoria: "Hammer Force PM", foto: "assets/images/produtos/pro/hammer_force_pm_biceps.jpg" },
-  { id: 265, nome: "Supino Reto", codigo: "PM 2038", categoria: "Hammer Force PM", foto: "" },
-  { id: 266, nome: "Remada", codigo: "PM 2039", categoria: "Hammer Force PM", foto: "" },
-  { id: 267, nome: "Supino Inclinado", codigo: "PM 2040", categoria: "Hammer Force PM", foto: "" },
-  { id: 268, nome: "Desenvolvimento de Ombro", codigo: "PM 2041", categoria: "Hammer Force PM", foto: "" },
-  { id: 269, nome: "Supino Declinado", codigo: "PM 2042", categoria: "Hammer Force PM", foto: "" },
-  { id: 270, nome: "Tríceps", codigo: "PM 2043", categoria: "Hammer Force PM", foto: "" },
-  { id: 271, nome: "Puxada Frontal Invertida", codigo: "PM 2044", categoria: "Hammer Force PM", foto: "" },
-  { id: 272, nome: "Puxada Alta", codigo: "PM 2045", categoria: "Hammer Force PM", foto: "" },
-  { id: 273, nome: "Abdominal", codigo: "PM 2046", categoria: "Hammer Force PM", foto: "" },
-  { id: 274, nome: "Flexora em Pé Unilateral", codigo: "PM 2047", categoria: "Hammer Force PM", foto: "" },
-  { id: 275, nome: "Cadeira Extensora", codigo: "PM 2048", categoria: "Hammer Force PM", foto: "" },
+  { id: 265, nome: "Supino Reto", codigo: "PM 2038", categoria: "Hammer Force PM", foto: "assets/images/produtos/pro/hammer_force_pm_supino_reto.jpg" },
+  { id: 266, nome: "Remada", codigo: "PM 2039", categoria: "Hammer Force PM", foto: "assets/images/produtos/pro/hammer_force_pm_remada.jpg" },
+  { id: 267, nome: "Supino Inclinado", codigo: "PM 2040", categoria: "Hammer Force PM", foto: "assets/images/produtos/pro/hammer_force_pm_supino_inclinado.jpg" },
+  { id: 268, nome: "Desenvolvimento de Ombro", codigo: "PM 2041", categoria: "Hammer Force PM", foto: "assets/images/produtos/pro/hammer_force_pm_desenvolvimento_ombro.jpg" },
+  { id: 269, nome: "Supino Declinado", codigo: "PM 2042", categoria: "Hammer Force PM", foto: "assets/images/produtos/pro/hammer_force_pm_supino_declinado.jpg" },
+  { id: 270, nome: "Tríceps", codigo: "PM 2043", categoria: "Hammer Force PM", foto: "assets/images/produtos/pro/hammer_force_pm_triceps.jpg" },
+  { id: 271, nome: "Puxada Frontal Invertida", codigo: "PM 2044", categoria: "Hammer Force PM", foto: "assets/images/produtos/pro/hammer_force_pm_puxada_frontal_invertida.jpg" },
+  { id: 272, nome: "Puxada Alta", codigo: "PM 2045", categoria: "Hammer Force PM", foto: "assets/images/produtos/pro/hammer_force_pm_puxada_alta.jpg" },
+  { id: 273, nome: "Abdominal", codigo: "PM 2046", categoria: "Hammer Force PM", foto: "assets/images/produtos/pro/hammer_force_pm_abdominal.jpg" },
+  { id: 274, nome: "Flexora em Pé Unilateral", codigo: "PM 2047", categoria: "Hammer Force PM", foto: "assets/images/produtos/pro/hammer_force_pm_flexora_pe_unilateral.jpg" },
+  { id: 275, nome: "Cadeira Extensora", codigo: "PM 2048", categoria: "Hammer Force PM", foto: "assets/images/produtos/pro/hammer_force_pm_cadeira_extensora.jpg" },
 
   // ── DUAL: item que faltava ──
   { id: 276, nome: "Cadeira Flexora e Extensora", codigo: "TTDS7172i", categoria: "Dual", foto: "assets/images/produtos/pro/dual_cadeira_flexora_extensora_ttds7172i.jpg" },
