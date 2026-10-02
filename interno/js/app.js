@@ -162,6 +162,7 @@ function renderizarItens(grupos) {
       const resultado = buscarPreco(item.nome, item.codigo);
       item._precoEncontrado = !!resultado;
       item._valorUnit = resultado ? resultado.unitario : 0;
+      item._sku = resultado ? resultado.sku : null;
       item._desconto = 0;
 
       const div = document.createElement("div");
@@ -632,5 +633,54 @@ async function gerarPDF() {
   }
 }
 
+// ── Gera o CSV no formato do sistema Touch: "Cód. Produto;Qtde.",
+// um item por linha, usando o SKU que bateu na planilha de preços
+// (não o código que o cliente digitou no WhatsApp). ──
+function gerarCSV() {
+  if (!gruposParseados.length) {
+    alert("Processa um pedido antes de gerar o CSV.");
+    return;
+  }
+
+  const linhas = ["Cód. Produto;Qtde."];
+  const semSku = [];
+
+  gruposParseados.forEach(grupo => {
+    grupo.itens.forEach(item => {
+      if (item._sku) {
+        linhas.push(`${item._sku};${item.qtd}`);
+      } else {
+        semSku.push(item.nome);
+      }
+    });
+  });
+
+  if (linhas.length === 1) {
+    alert("Nenhum item tem SKU reconhecido na planilha — não dá pra gerar o CSV.");
+    return;
+  }
+
+  // Mesma codificação do arquivo original do sistema (ISO-8859-1/Latin-1),
+  // por isso convertemos byte a byte em vez de usar UTF-8 padrão do navegador.
+  const texto = linhas.join("\r\n") + "\r\n";
+  const bytes = new Uint8Array(texto.split("").map(c => c.charCodeAt(0) & 0xff));
+  const blob = new Blob([bytes], { type: "text/csv;charset=iso-8859-1" });
+
+  const hoje = new Date();
+  const dataArquivo = hoje.toISOString().slice(0, 10).replace(/-/g, "");
+  const nomeArquivo = `itens-venda-touch-${dataArquivo}.csv`;
+
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = nomeArquivo;
+  link.click();
+  URL.revokeObjectURL(link.href);
+
+  if (semSku.length > 0) {
+    alert("Gerado, mas esses itens não tinham SKU reconhecido e ficaram de fora do CSV:\n" + semSku.join("\n"));
+  }
+}
+
 document.getElementById("btn-processar").addEventListener("click", processarMensagem);
 document.getElementById("btn-gerar-pdf").addEventListener("click", gerarPDF);
+document.getElementById("btn-gerar-csv").addEventListener("click", gerarCSV);

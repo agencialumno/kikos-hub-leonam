@@ -153,6 +153,15 @@ textarea { resize: vertical; }
 
 .btn-gerar:hover { box-shadow: 0 8px 28px rgba(47, 191, 95, 0.5); }
 
+.btn-secundario {
+  background: transparent;
+  border: 1px solid var(--borda-sutil);
+  color: var(--branco);
+  box-shadow: none;
+}
+
+.btn-secundario:hover { box-shadow: 0 0 0 1px var(--cinza-metal); }
+
 .erro {
   color: var(--vermelho-brilho);
   font-size: 14px;
